@@ -15,5 +15,8 @@ blocks:
       jobs:
         - name: Test
           commands:
+            - bundle install --deployment --path vendor/bundle
+            - 'bundle exec rake db:setup'
+            - 'bundle exec rake:db:prepare'
             - bundle exec rspec
             - bundle exec cucumber
