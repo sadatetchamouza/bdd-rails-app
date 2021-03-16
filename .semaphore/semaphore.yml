@@ -5,15 +5,10 @@ agent:
     type: e1-standard-2
     os_image: ubuntu1804
 blocks:
-  - name: Test
+  - name: 'Block #1'
+    dependencies: []
     task:
-      env_vars:
-        - name: DATABASE_URL
-          value: 'postgresql://postgres:@0.0.0.0:5432/myapp_test'
-        - name: RAILS_ENV
-          value: test
       jobs:
-        - name: Test
+        - name: 'Job #1'
           commands:
             - bundle exec rspec
-            - bundle exec cucumber
