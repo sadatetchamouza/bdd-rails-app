@@ -1,5 +1,7 @@
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 require 'spec_helper'
+require 'support/home_controller_helper'
+
 ENV['RAILS_ENV'] ||= 'test'
 
 require File.expand_path('../config/environment', __dir__)
@@ -81,5 +83,8 @@ RSpec.configure do |config|
         example.run
       end
     end
+    config.include Warden::Test::Helpers
+    config.include Devise::TestHelpers, :type => :controller
+    config.include HomeControllerHelper, :type => :controller
   end
 end
