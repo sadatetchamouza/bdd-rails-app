@@ -8,7 +8,7 @@ RSpec.describe HomeController do
         it "get status ok" do
             get :index
 
-            expect(response_status).to be(200) 
+            expect(response.status).to be(200) 
         end
     end
     
