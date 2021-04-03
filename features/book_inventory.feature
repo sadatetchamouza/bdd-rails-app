@@ -13,4 +13,8 @@ Feature: Book Inventory
         When I visit the homepage
         Then I should see the list of my books
 
+    Scenario: Adding a new book to the inventory
+        When I submit the new book to my inventory
+        Then I should see the new book in my inventory
+
     
