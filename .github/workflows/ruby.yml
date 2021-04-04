@@ -10,6 +10,20 @@ jobs:
   test:
 
     runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:12.2
+        env:
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_USER: postgres
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
     
     steps:
     - uses: actions/checkout@v2
@@ -21,7 +35,18 @@ jobs:
       with:
         ruby-version: 2.6.0
         bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+
+    - name: Install PostgreSQL Client
+      run: |
+        sudo apt-get -yqq install libpq-dev
     - name: Install dependencies
       run: bundle install
     - name: Run tests
+      env:
+        RAILS_ENV: test
+        POSTGRES_HOST: localhost
+        POSTGRES_USER: postgres
+        POSTGRES_PASSWORD: postgres
+        POSTGRES_PORT: ${{ job.services.postgres.ports[5432] }}
+        RUBYOPT: "-W:no-deprecated -W:no-experimental"
       run: bundle exec rspec
