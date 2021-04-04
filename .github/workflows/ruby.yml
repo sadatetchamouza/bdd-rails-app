@@ -13,8 +13,9 @@ jobs:
 
     services:
       postgres:
-        image: postgres:12.2
+        image: postgres:11
         env:
+          RAILS_ENV: test
           POSTGRES_PASSWORD: postgres
           POSTGRES_USER: postgres
         ports:
