@@ -43,6 +43,14 @@ jobs:
         sudo apt-get -yqq install libpq-dev
     - name: Install dependencies
       run: bundle install
+    - name: Run acceptance tests
+      env:
+          RAILS_ENV: test
+          PGHOST: localhost
+          POSTGRES_DB: bdd_app_test
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+      run: bundle exec cucumber
     - name: Run tests
       env:
           RAILS_ENV: test
