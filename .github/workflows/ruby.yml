@@ -48,5 +48,5 @@ jobs:
         POSTGRES_USER: postgres
         POSTGRES_PASSWORD: postgres
         POSTGRES_PORT: ${{ job.services.postgres.ports[5432] }}
-        RUBYOPT: "-W:no-deprecated -W:no-experimental"
+        #RUBYOPT: "-W:no-deprecated -W:no-experimental"
       run: bundle exec rspec
