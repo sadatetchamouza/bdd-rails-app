@@ -17,4 +17,12 @@ Feature: Book Inventory
         When I submit the new book to my inventory
         Then I should see the new book in my inventory
 
+    Scenario: Update a book in the inventory
+        Given I have a book in my inventory
+        When I change the book title
+        Then I should have the book with the new title
     
+    Scenario: Remove a book from my inventory
+        Given I have a book in my inventory
+        When I remove a book from my inventory
+        Then I should not see it listing in my inventory
