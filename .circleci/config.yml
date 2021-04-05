@@ -11,6 +11,7 @@ jobs:
         environment:
           PGHOST: localhost
           POSTGRES_USER: circleci-demo-ruby
+          POSTGRES_DB: bdd_app_test
           RAILS_ENV: test
       - image: postgres:11
         environment:
