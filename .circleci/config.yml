@@ -5,8 +5,7 @@ orbs:
 jobs:
   build:
     docker:
-      - image: circleci/ruby:2.6.3-stretch-node
-      executor: ruby/default
+      - image: circleci/ruby:2.6.0
       environment:
         RAIL_ENV: test
     steps:
