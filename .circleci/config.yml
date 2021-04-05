@@ -46,9 +46,9 @@ jobs:
       # Setup the database
       - run: bundle exec rake db:setup
         environment:
-            POSTGRES_USER: circleci-demo-ruby
-            POSTGRES_DB: bdd_app_test
-            POSTGRES_PASSWORD: postgres
+        POSTGRES_USER: circleci-demo-ruby
+        POSTGRES_DB: bdd_app_test
+        POSTGRES_PASSWORD: postgres
 
       # Run the tests
       - run: bundle exec rake
