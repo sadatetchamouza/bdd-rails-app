@@ -25,6 +25,8 @@ jobs:
         name: Restore bundle cache
         key: circleci-demo-ruby-{{ checksum "Gemfile.lock" }}
 
+      - run: gem install bundler
+
       # Bundle install dependencies
       - run: bundle install --path vendor/bundle
 
