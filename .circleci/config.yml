@@ -42,7 +42,10 @@ jobs:
             nvm install 10.17.0
             nvm use 10.17.0
 
-      - run: RAILS_ENV=test bundle exec rake assets:precompile
+      - run: 
+          command: |
+            node -v
+            RAILS_ENV=test bundle exec rake assets:precompile
 
       # Cache Dependencies
       - type: cache-save
