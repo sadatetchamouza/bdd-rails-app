@@ -31,11 +31,14 @@ jobs:
       # Bundle install dependencies
       - run: bundle install --path vendor/bundle
 
-      - run: wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.1/install.sh | bash &&  sudo /opt/circleci/.nvm/nvm.sh
+      - run: 
+        name: Install node
+        command: |
+          wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.1/install.sh | bash &&  sudo /opt/circleci/.nvm/nvm.sh
       
-      - run: export NVM_DIR="$HOME/.nvm"
-      [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-      [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion
+          export NVM_DIR="$HOME/.nvm"
+          [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+          [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion
 
       - run: RAILS_ENV=test bundle exec rake assets:precompile
 
