@@ -41,7 +41,7 @@ jobs:
             source ~/.bashrc
             nvm install 10.17.0
             nvm use 10.17.0
-      - run: yarn install
+      - run: yarn upgrade
 
       - run: 
           command: |
