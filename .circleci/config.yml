@@ -31,16 +31,10 @@ jobs:
       # Bundle install dependencies
       - run: bundle install --path vendor/bundle
 
-      - run:
-        label: Use nvm for a specific node version...
-        command: |
-          set +e
-          # if you need to install it, uncomment the following
-          wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.1/install.sh | bash &&  sudo /opt/circleci/.nvm/nvm.sh
-          export NVM_DIR="/opt/circleci/.nvm"
-          [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-          nvm install 10.15.1
-          nvm use 10.15.1
+      - run: wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.1/install.sh | bash &&  sudo /opt/circleci/.nvm/nvm.sh
+      
+      - run: export NVM_DIR="/opt/circleci/.nvm"
+        [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 
       - run: RAILS_ENV=test bundle exec rake assets:precompile
 
