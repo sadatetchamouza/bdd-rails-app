@@ -1,9 +1,8 @@
-version: 2.1 # Use 2.1 to enable using orbs and other features.
+version: 2 # Use 2.1 to enable using orbs and other features.
 
 # Declare the orbs that we'll use in our config.
 # read more about orbs: https://circleci.com/docs/2.0/using-orbs/
-orbs:
-  node: circleci/node@3
+
 jobs:
   build:
     #working_directory: ~/your-app-name
@@ -31,6 +30,10 @@ jobs:
 
       # Bundle install dependencies
       - run: bundle install --path vendor/bundle
+
+      - run: nvm install 10.15.1
+
+      - run: nvm use 10.15.1
 
       - run: RAILS_ENV=test bundle exec rake assets:precompile
 
